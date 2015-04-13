@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+
+<html ng-app="testApp">
+
+  <head>
+    <title>Brandly Test Application</title>
+  </head>
+
+  <body ng-controller="MainCtrl as vm">
+
+    <section id="content">
+      <div id="previewImage">
+        PREVIEW IMAGE OF {{vm.currentItem.productName}} GOES HERE
+      </div>
+      <div id="itemForm">
+        <form>
+          <fieldset ng-repeat="field in vm.currentItem.fields">
+            <label for="{{field}}">
+              {{field | title}}:
+            </label>
+            <input id          = "{{field}}"
+                   placeholder = "{{field}}"
+                   type        = "text"
+                   ng-model    = "vm.currentItem[field]" />
+          </fieldset>
+        </form>
+      </div>
+    </section>
+
+    <section id="miniBasket">
+
+      <h2>Shopping Cart: ${{vm.basketSum()}}</h2>
+
+      <ul ng-switch on = "vm.collapseMiniCart()"
+          ng-class     = "{collapsed: vm.collapseMiniCart()}">
+
+        <li ng-switch-when = "false"
+            ng-repeat      = "basketItem in vm.basketItems"
+            ng-class       = "{selected: vm.isCurrent(basketItem)}">
+          <img ng-src="{{basketItem.thumb}}" />
+          <span>
+            {{basketItem.productName + ' -- ' + basketItem.name}}
+          </span>
+          <select ng-options = "i[0] as (i[0] + ' -- $' + i[1]) for i in basketItem.priceList"
+                  ng-model   = "basketItem.quantity">
+          </select>
+          <div class="buttons">
+            <button ng-disabled = "vm.isCurrent(basketItem)"
+                    ng-click    = "vm.goToItem(basketItem)">
+              Edit
+            </button>
+            <button ng-disabled = "!vm.canRemove()"
+                    ng-click    = "vm.removeItem(basketItem)">
+              Remove
+            </button>
+            <button ng-click="vm.addAnother(basketItem)">
+              Add Another
+            </button>
+          </div>
+        </li>
+
+        <li ng-switch-when = "true"
+            ng-repeat      = "basketItem in vm.basketItems"
+            ng-class       = "{selected: vm.isCurrent(basketItem)}">
+          <span>
+            {{basketItem.productName + ' -- ' + basketItem.name}}
+          </span>
+          <span>
+            ${{basketItem.getPrice()}}
+          </span>
+          <span>
+            ({{basketItem.quantity}})
+          </span>
+          <div class="buttons">
+            <button ng-disabled = "vm.isCurrent(basketItem)"
+                    ng-click    = "vm.goToItem(basketItem)">
+              Edit
+            </button>
+            <button ng-disabled = "!vm.canRemove()"
+                    ng-click    = "vm.removeItem(basketItem)">
+              Remove
+            </button>
+            <button ng-click="vm.addAnother(basketItem)">
+              Add Another
+            </button>
+          </div>
+        </li>
+
+      </ul>
+      <button>Review Cart</button>
+    </section>
+
+  </body>
+
+
+  <script src="angular.js"></script>
+  <script src="app.js"></script>
+  <script src="basketItems.js"></script>
+
+</html>
