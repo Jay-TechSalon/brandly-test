@@ -10,7 +10,6 @@
   function BasketItem (name, quantity) {
     this.name = name;
     this.quantity = quantity;
-    this.thumb = "thumb.jpg";
   }
 
   BasketItem.prototype = {
@@ -20,6 +19,9 @@
           return this.priceList[i][1];
         }
       }
+    },
+    getThumb: function () {
+      return this.thumb;
     }
   };
 
@@ -40,6 +42,7 @@
         [250, 35]
       ],
       productName: 'Business Card',
+      thumb: 'business_card_thumb.jpg',
       fields: ['name', 'title', 'street', 'city, state, zip', 'phone', 'email']
     });
 
@@ -63,6 +66,7 @@
         [50, 25]
       ],
       productName: 'Letterhead',
+      thumb: 'letterhead_thumb.jpg',
       fields: ['name', 'title', 'phone', 'email']
     });
 

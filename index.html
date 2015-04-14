@@ -37,7 +37,7 @@
         <li ng-switch-when = "false"
             ng-repeat      = "basketItem in vm.basketItems"
             ng-class       = "{selected: vm.isCurrent(basketItem)}">
-          <img ng-src="{{basketItem.thumb}}" />
+          <img ng-src="{{basketItem.getThumb()}}" />
           <span>
             {{basketItem.productName + ' -- ' + basketItem.name}}
           </span>
