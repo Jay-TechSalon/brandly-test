@@ -1,6 +1,33 @@
 body {
-  background-color: red; }
+  background-color: #DCDCDC;
+  font-family: "Raleway", sans-serif, 16px;
+  font-weight: 400; }
 
 input {
+  min-width: 60%;
   border-radius: 5px;
-  font: Arial; }
+  border: none;
+  padding: 5px;
+  padding-top: 10px;
+  font-family: "Raleway", sans-serif, 16px;
+  font-weight: 700;
+  font-size: 16px;
+  float: right; }
+
+textarea,
+keygen,
+select,
+button {
+  font-family: "Raleway", sans-serif, 16px;
+  color: green; }
+
+fieldset {
+  margin-left: 1.25em;
+  border: none;
+  border-bottom: 1px solid #dcdcdc;
+  max-width: 50%;
+  padding: .75em;
+  background-color: #f0f0f0; }
+
+.ng-binding {
+  padding: 1.25em; }
