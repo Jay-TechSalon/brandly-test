@@ -1,5 +1,9 @@
-$color: orange;
+$color: red;
 
 body {
   background-color: $color;
+}
+input {
+  border-radius: 5px;
+  font: Arial;
 }

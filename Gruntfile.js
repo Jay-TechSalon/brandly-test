@@ -3,7 +3,7 @@ module.exports = function(grunt) {
     sass: {
       dist: {
         files: {
-          'public/stylesheets/style.css': 'sass/style.scss'
+          'css/style.css': 'sass/style.scss'
         }
       }
     },
